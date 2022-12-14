@@ -1,0 +1,79 @@
+
+[end]  # this marks the end of the species-specific parameters above
+
+# ===============================================================================
+# Additional parameters for annuals-only establishment.
+#
+# name = name as found in previous table.  must be exactly the same.
+# viable = max years seed viability.  sets seedprod array size.
+# xdecay = decay exponent.  indivs established = SUM(1/seed_age^xdecay)
+# pseed = the average number of seeds produced by annual species per 1g of biomass, per 1m^2 and per year.
+# var = the variance parameter of the beta distribution for annual establishment. This parameter, 
+#       along with the mean (pestab), is used to calculate the two shape parameters: alpha and beta. 
+#       NOTE: var must be < pestab * (1-pestab) or alpha and/or beta will be negative,
+#       we will no longer be meeting the assumptions of a beta distribution, and the code will fail.
+#
+# name  viable xdecay  pseed   var
+ brte     3    1.00    50  0.01               
+ cryp     10    1.00     30  0.008      
+ chen     10    1.00     30  0.008        
+ 
+[end]  # end of additional annuals-only parameters.
+
+# ===============================================================================
+# Species-specific probabilities of vegetative propagation for
+# various mortality types.  In C&L 1990, the probabilities were the same
+# for all clonal species, however, the program design makes it easy to provide
+# species-level control.  If the species is not clonal, the numbers are ignored,
+# which makes it easy to just cut and paste.
+
+# name = 4 char name exactly as above (although order is not important)
+# vprop1 = probability if insufficient resources
+# vprop2 = probability if slow growth
+# vprop3 = probability if intrinsic mortality
+# vprop4 = probability if disturbance
+#
+# name     vprop1 vprop2 vprop3 vprop4
+ artr     0.7500 0.9000 0.9000 0.9000
+ cryp     0.7500 0.9000 0.9000 0.9000
+ chen     0.7500 0.9000 0.9000 0.9000
+ phho     0.7500 0.9000 0.9000 0.9000
+ arfr     0.7500 0.9000 0.9000 0.9000
+ brte     0.7500 0.9000 0.9000 0.9000
+ pssp     0.7500 0.9000 0.9000 0.9000
+ bogr     0.7500 0.9000 0.9000 0.9000
+ chvi     0.7500 0.9000 0.9000 0.9000
+ oppo     0.7500 0.9000 0.9000 0.9000
+
+[end]  # this marks the end of the veg-prop parameters
+
+# ===============================================================================
+# Species-specific input for seed dispersal.
+# Seed dispersal based on Coffin & Lauenroth 1989 paper
+# NOTE: Seed dispersal requires running with gridded option.
+#
+# name = 4 char name exactly as above (although order is not important)
+# dispersal = flag to turn seed dispersal on/off for this species(0 is off, 1 is on)
+# param1 = % of maximum biomass required for an individual to produce seeds
+# PPTdry = ppt of a dry year (in mm)
+# PPTwet = ppt of a wet year (in mm)
+# Pmin = probability of producing seeds in a dry year
+# Pmax = probability of producing seeds in a wet year
+# H = the average release height of the inflorescences (cm) 
+# VT = the average sinking velocity of the seeds (cm/sec)
+# VW - the mean horizontal wind speed (500 cm/sec in Coffin and Lauenroth 1989)
+#
+# name 	dispersal	param1	PPTdry	PPTwet	Pmin	Pmax	H	VT	VW
+ artr	1		0.5	105	520	0.01	0.55	30.0	100.0	500.0
+ cryp 	1		0.5	105	520	0.01	0.55	30.0	100.0	500.0
+ chen 	1		0.5	105	520	0.01	0.55	30.0	100.0	500.0
+ phho 	1		0.5	105	520	0.01	0.55	30.0	100.0	500.0
+ arfr 	1		0.5	105	520	0.01	0.55	30.0	100.0	500.0
+ brte 	1		0.5	105	520	0.01	0.55	30.0	100.0	500.0
+ pssp 	1		0.5	105	520	0.01	0.55	30.0	100.0	500.0
+ bogr 	1		0.5	105	520	0.01	0.55	30.0	100.0	500.0
+ chvi 	1		0.5	105	520	0.01	0.55	30.0	100.0	500.0
+ oppo 	1		0.5	105	520	0.01	0.55	30.0	100.0	500.0
+
+[end]	# this marks the end of the seed-dispersal parameters
+
